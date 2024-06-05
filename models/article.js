@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
       },
       title: DataTypes.STRING,
-      body: DataTypes.STRING,
+      body: DataTypes.TEXT('long'),
     },
     {
       sequelize,

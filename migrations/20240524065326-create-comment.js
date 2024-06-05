@@ -9,11 +9,11 @@ module.exports = {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
       },
-      articleId: {
+      articleID: {
         type: Sequelize.UUID,
         references: {
-          model: "Articles", // Reference the "Companies" table
-          key: "id", // Reference the "id" column in the "Companies" table
+          model: "Articles",
+          key: "id",
         },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
@@ -28,7 +28,7 @@ module.exports = {
         onUpdate: "CASCADE",
       },
       body: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT("long"),
       },
       createdAt: {
         allowNull: false,

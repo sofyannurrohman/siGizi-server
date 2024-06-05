@@ -15,13 +15,16 @@ exports.registerUser = async (req, res) => {
     const token = signToken(newUser.id);
 
     return res.status(200).json({
-      message: "success",
-      token: token,
+      status: "success",
+      message: "successfuly register the user ",
+      code: 200,
       data: newUser,
+      token: token,
     });
   } catch (error) {
-    console.log(error);
     return res.status(400).json({
+      status: "fail",
+      code: 400,
       message: "validasi error",
       error: error.errors.map((err) => err.message),
     });
@@ -34,6 +37,7 @@ exports.loginUser = async (req, res) => {
     if (!req.body.email || !req.body.password) {
       return res.status(400).json({
         status: "fail",
+        code: 400,
         message: "error validation",
         error: "please input email and password ",
       });
@@ -46,6 +50,7 @@ exports.loginUser = async (req, res) => {
     ) {
       return res.status(400).json({
         status: "fail",
+        code: 400,
         message: "error login",
         error: "invalid email or password",
       });
@@ -54,8 +59,15 @@ exports.loginUser = async (req, res) => {
     const token = signToken(userData.id);
     return res.status(200).json({
       status: "success",
+      code: 200,
       message: "login berhasil",
       token: token,
     });
-  } catch (error) {}
+  } catch (error) {
+    return res.status(500).json({
+      status: "fail",
+      code: 500,
+      message: error.message,
+    });
+  }
 };

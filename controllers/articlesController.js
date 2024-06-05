@@ -1,8 +1,11 @@
-var fs = require("fs");
 const { Article } = require("../models");
 const { Comment } = require("../models");
 const { ArticleImage } = require("../models");
-const deleteOldImage = require("../helper/deleteOldImage");
+const { Storage } = require("@google-cloud/storage");
+
+keyFilename = "credentials.json";
+const storage = new Storage({ keyFilename });
+const bucket = storage.bucket("article-images-caps");
 
 exports.getArticles = async (req, res) => {
   try {
@@ -14,28 +17,36 @@ exports.getArticles = async (req, res) => {
 
     const comments = await Comment.findAll({
       where: {
-        articleId: articleID, // Find comments where articleId matches the provided ID
+        articleID: articleID,
       },
     });
     if (!article) {
-      return res.status(404).json({ message: "Article not found" });
+      return res.status(404).json({
+        status: "fail",
+        code: 404,
+        message: "Article not found",
+      });
     }
 
     const responseJSON = {
       id: article.id,
       title: article.title,
       body: article.body,
-      image: imageArticle.filename,
+      image_url: imageArticle.url,
       createdAt: article.createdAt,
       comments: comments,
     };
-    res.json({
+    res.status(200).json({
       status: "success",
       data: responseJSON,
     });
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: err.message });
+    res.status(500).json({
+      status: "fail",
+      code: 500,
+      message: err.message,
+    });
   }
 };
 
@@ -45,10 +56,14 @@ exports.getAllArticles = async (req, res) => {
 
     return res.status(200).json({
       status: "success",
+      code: 200,
+      message: "succesfuly get all article",
       data: articles,
     });
   } catch (err) {
-    return res.status(500).json({ message: err.message });
+    return res
+      .status(500)
+      .json({ status: "fail", code: 500, message: err.message });
   }
 };
 
@@ -57,30 +72,21 @@ exports.postArticles = async (req, res) => {
   const body = req.body.body;
   const userID = req.user.id;
 
-  if (!req.file) {
-    return res
-      .status(400)
-      .json({ message: "Please provide image for article" });
-  }
-
-  const image = req.file.path;
-
   if (!title || !body) {
-    return res.status(400).json({ message: "Please provide title and body" });
+    return res.status(400).json({
+      status: fail,
+      code: 400,
+      message: "please provide title and body",
+    });
   }
 
   try {
     const newArticle = await Article.create({ userID, title, body });
-    const newImage = await ArticleImage.create({
-      articleID: newArticle.id,
-      userID: userID,
-      filename: image,
-    });
     const responseJson = {
       userID: userID,
+      articleID: newArticle.id,
       title: newArticle.title,
       body: newArticle.body,
-      image: newImage,
     };
     res.status(201).json({
       status: "success",
@@ -101,11 +107,13 @@ exports.updateArticles = async (req, res) => {
   });
 
   if (req.file) {
-    await deleteOldImage(imageArticle.filename);
+    await bucket.file(imageArticle.filename).delete();
   }
 
   if (!article) {
-    return res.status(400).json({ message: "article not found" });
+    return res
+      .status(400)
+      .json({ status: "fail", code: 400, message: "article not found" });
   }
 
   try {
@@ -122,9 +130,16 @@ exports.updateArticles = async (req, res) => {
     await ArticleImage.update(newArticleImage, {
       where: { articleID: articlesID },
     });
-    res.status(201).json(newArticle);
+    return res.status(201).json({
+      status: "success",
+      code: 201,
+      message: "succesfuly update article ",
+      data: newArticle,
+    });
   } catch (err) {
-    return res.status(500).json({ message: err.message });
+    return res
+      .status(500)
+      .json({ status: "fail", code: 500, message: err.message });
   }
 };
 
@@ -133,33 +148,34 @@ exports.deleteArticles = async (req, res) => {
   const article = await Article.findByPk(articleID);
 
   const commentArticle = await Comment.findOne({
-    where: { articleId: articleID },
+    where: { articleID: articleID },
   });
 
   const imageArticle = await ArticleImage.findOne({
     where: { articleID: articleID },
   });
 
-  console.log(commentArticle);
-  console.log(imageArticle);
-
   if (!article) {
-    return res.status(400).json({ message: "article not found" });
+    return res
+      .status(404)
+      .json({ status: "fail", code: 404, message: "article not found" });
   }
   try {
     await article.destroy(article);
     if (commentArticle != null) {
       await commentArticle.destroy(commentArticle);
     }
+    await bucket.file(imageArticle.filename).delete();
     await imageArticle.destroy(imageArticle);
-
-    await deleteOldImage(imageArticle.filename);
 
     return res.status(200).json({
       status: "success",
+      code: 200,
       message: "article has been deleted",
     });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res
+      .status(500)
+      .json({ status: fail, code: 500, message: error.message });
   }
 };
