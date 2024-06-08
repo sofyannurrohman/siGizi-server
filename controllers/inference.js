@@ -1,4 +1,4 @@
-import tf from "@tensorflow/tfjs";
+const tf = require("@tensorflow/tfjs");
 
 function loadModel() {
   const modelUrl =

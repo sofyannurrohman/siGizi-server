@@ -1,6 +1,8 @@
 const express = require("express");
+const { predictStunting } = require("../controllers/predictController");
+const verifyJWT = require("../middleware/verifyJWT");
 const router = express.Router();
-import predictStunting from "../controllers/predictController";
 
-router.post("/predict", predictStunting);
+router.post("/predict", verifyJWT, predictStunting);
+
 module.exports = router;

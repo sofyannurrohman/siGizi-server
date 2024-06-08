@@ -6,6 +6,7 @@ const usersRouter = require("./routes/users");
 const articlesRouter = require("./routes/articles");
 const articleImageRouter = require("./routes/article_image");
 const commentsRouter = require("./routes/comments");
+const predictRouter = require("./routes/predict");
 const AuthRouter = require("./routes/Auth");
 const morgan = require("morgan");
 
@@ -41,22 +42,20 @@ app.use(express.json());
 // });
 app.use(morgan("dev"));
 app.use(cors());
-// app.use(
-//   multer({ storage: fileStorage, fileFilter: fileFilter }).single("image")
-// );
+
 //Routing
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/auth", AuthRouter);
 app.use("/api/v1/", articlesRouter);
 app.use("/api/v1/", articleImageRouter);
 app.use("/api/v1/", commentsRouter);
+app.use("/api/v1/", predictRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
 // Server
-
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
