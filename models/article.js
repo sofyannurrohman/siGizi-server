@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Article.hasMany(models.Comment);
+      Article.hasMany(models.ArticleImage);
     }
   }
   Article.init(
@@ -23,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
       },
       title: DataTypes.STRING,
-      body: DataTypes.TEXT('long'),
+      body: DataTypes.TEXT("long"),
     },
     {
       sequelize,

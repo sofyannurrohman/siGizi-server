@@ -13,12 +13,26 @@ exports.predictStunting = async (req, res) => {
         "please provide umur, jenis kelamin, berat badan, panjang badan, lingkar kepala",
     });
   }
-  const label = "tidak stunting";
+  const model = await loadModel();
   let rule;
   let ideal;
   let suggestion;
   let food1, food2, food3;
+  let payload;
   try {
+    if (jenis_kelamin === "perempuan") {
+      payload = [umur, 1, bb, pb, lk];
+    } else {
+      payload = [umur, 0, bb, pb, lk];
+    }
+    const hasil_predict = await predict(model, payload);
+    console.log(`hasil predict = ${hasil_predict}`);
+    console.log(`payload = ${payload}`);
+    if (hasil_predict == 1) {
+      label = "stunting";
+    } else {
+      label = "tidak stunting";
+    }
     if (label === "stunting") {
       if (umur < 6) {
         rule = await Rule.findByPk(1);

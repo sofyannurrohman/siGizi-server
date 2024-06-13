@@ -52,7 +52,13 @@ exports.getArticles = async (req, res) => {
 
 exports.getAllArticles = async (req, res) => {
   try {
-    const articles = await Article.findAll();
+    const articles = await Article.findAll({
+      include: [
+        {
+          model: ArticleImage,
+        },
+      ],
+    });
 
     return res.status(200).json({
       status: "success",
