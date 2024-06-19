@@ -113,7 +113,7 @@ We welcome contributions to the Sigizi App backend server. To contribute:
     <img src="https://storage.googleapis.com/sigizi-caps/gifdemo.gif"
         alt="SplashScreen"    
         style="margin-right: 10px;"    
-        width="100%" />
+        width="50%" />
 </p>
 <!-- LICENSE -->
 ## License
