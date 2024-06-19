@@ -96,6 +96,23 @@ DELETE /api/v1/articles/:articleID - Delete data for a specific article
 Prediction and Recommendations
 POST /api/v1/predictions - Get stunting risk prediction
 
+## Cloud Computing Documentation
+
+- ### 1. Prepare model.json from ML
+  - Load the model in Express js code in `inference.js`
+  - ### 2. Setup Google Cloud
+  - Enable Cloud Compute Engine and Cloud SQL Admin
+  - Create VM instance and SQL instance
+  - Configure SQL networking for VM instance public IP
+- ### 3. Install and init package for Backend Server
+  - git clone this project
+  - move to directory cloned
+  - npm install for install all dependencies
+- ### 4. Make a continous Backend run 
+  - npm i pm2
+  - pm2 run app.js
+- ### 5. Check the server is it running
+    
 <!-- CONTRIBUTING -->
 ## Contributing
 
