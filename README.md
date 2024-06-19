@@ -36,8 +36,8 @@ C241-PS299
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Configuration](#configuration)
-- [Running the Server](#running-the-server)
 - [API Endpoints](#api-endpoints)
+- [Running the Server](#running-the-server)
 - [Contributing](#contributing)
 - [Usage](#usage)
 - [License](#license)
@@ -61,7 +61,7 @@ The Sigizi App backend server handles the core functionalities of the applicatio
 - npm (v6 or later)
 - Mysql
 
-## Installation ##Configuration ##
+## Installation & Configuration 
 
 1. Clone the repository:
 
@@ -96,7 +96,7 @@ DELETE /api/v1/articles/:articleID - Delete data for a specific article
 Prediction and Recommendations
 POST /api/v1/predictions - Get stunting risk prediction
 
-## Cloud Computing Documentation
+## Running the Server
 
 - ### 1. Prepare model.json from ML
   - Load the model in Express js code in `inference.js`
