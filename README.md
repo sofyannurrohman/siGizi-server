@@ -38,8 +38,8 @@ C241-PS299
 - [Configuration](#configuration)
 - [Running the Server](#running-the-server)
 - [API Endpoints](#api-endpoints)
-- [Testing](#testing)
 - [Contributing](#contributing)
+- [Usage](#usage)
 - [License](#license)
 
 ## Introduction
@@ -107,7 +107,9 @@ We welcome contributions to the Sigizi App backend server. To contribute:
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<video controls>
+<!-- Usage -->
+## Usage
+<video>
   <source src="https://storage.googleapis.com/sigizi-caps/demo.mp4" type="video/mp4">
 </video>
 
