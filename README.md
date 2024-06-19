@@ -96,16 +96,20 @@ DELETE /api/v1/articles/:articleID - Delete data for a specific article
 Prediction and Recommendations
 POST /api/v1/predictions - Get stunting risk prediction
 
-Contributing
+<!-- CONTRIBUTING -->
+## Contributing
+
 We welcome contributions to the Sigizi App backend server. To contribute:
 
-Fork the repository.
-Create a new branch (git checkout -b feature/your-feature-name).
-Make your changes.
-Commit your changes (git commit -m 'Add some feature').
-Push to the branch (git push origin feature/your-feature-name).
-Open a pull request.
-Please ensure your code adheres to our coding standards and includes appropriate tests.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<video controls>
+  <source src="https://storage.googleapis.com/sigizi-caps/demo.mp4" type="video/mp4">
+</video>
 
 <!-- LICENSE -->
 ## License
