@@ -3,30 +3,28 @@
 
 C241-PS299
 
-Welcome to the backend server for the Sigizi App (Solusi Generasi Z Sehat dan Istimewa), an innovative application designed to combat childhood stunting by providing accurate predictions and personalized recommendations for nutrition and supplements.
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/faniabdullah/bangkit-final-project">
-    <img src="https://i.imgur.com/ABJzG5P.png" width='400dp' alt="Logo" >
+    <img src="https://storage.googleapis.com/sigizi-caps/logosigizi.png" width='400dp' alt="Logo" >
   </a>
 
-  <h3 align="center">SkinSkan App </h3>
+  <h3 align="center">siGIzi App </h3>
 
   <p align="center">
-    Application that helps users to know how to help users examine their own bodies to detect early stage skin cancer.
-   This is a project to fulfill the  <a href="https://grow.google/intl/id_id/bangkit/"><strong>Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka »</strong></a>
+    Welcome to the backend server for the Sigizi App (Solusi Generasi Z Sehat dan Istimewa), an innovative application designed to combat childhood stunting by providing accurate predictions and personalized recommendations for nutrition and supplements. This is a project to fulfill the  <a href="https://grow.google/intl/id_id/bangkit/"><strong>Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka »</strong></a>
    Program.
     <br />
-    <a href="https://github.com/faniabdullah/bangkit-final-project"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/sofyannurrohman/siGizi-server"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/faniabdullah/bangkit-final-project">View Demo</a>
+    <a href="https://github.com/sofyannurrohman/siGizi-server">View Demo</a>
     ·
-    <a href="https://github.com/faniabdullah/bangkit-final-project/issues">Report Bug</a>
+    <a href="https://github.com/sofyannurrohman/siGizi-server">Report Bug</a>
     ·
-    <a href="https://github.com/faniabdullah/bangkit-final-project/issues">Request Feature</a>
+    <a href="https://github.com/sofyannurrohman/siGizi-server">Request Feature</a>
   </p>
 </p>
 
