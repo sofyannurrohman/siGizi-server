@@ -109,9 +109,12 @@ We welcome contributions to the Sigizi App backend server. To contribute:
 
 <!-- Usage -->
 ## Usage
-<video width="320" height="240" autoplay muted>
-  <source src="https://storage.googleapis.com/sigizi-caps/demo.mp4" type="video/mp4">
-  </video>
+<p align="center"> 
+    <img src="https://storage.googleapis.com/sigizi-caps/gifdemo.gif"
+        alt="SplashScreen"    
+        style="margin-right: 10px;"    
+        width="150" />
+</p>
 <!-- LICENSE -->
 ## License
 
