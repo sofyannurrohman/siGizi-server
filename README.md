@@ -57,17 +57,60 @@ The Sigizi App backend server handles the core functionalities of the applicatio
 
 ## Requirements
 
-- Node.js (v14 or later)
+- Node.js (v16 or later)
 - npm (v6 or later)
-- MongoDB
+- Mysql
 
-## Installation
+## Installation ##Configuration ##
 
 1. Clone the repository:
 
 ```bash
 git clone https://github.com/yourusername/sigizi-backend.git
 cd sigizi-backend
+npm install
+PORT=3000
+.env
+JWT_SECRET=your_jwt_secret_key
+npm start
+```
+## API Endpoints
+Here are some of the key API endpoints provided by the backend server:
+
+User Authentication
+
+POST /api/v1/auth/register - Register a new user
+POST /api/v1/auth/login - Login a user
+
+Child Data Management
+GET /api/v1/children - Get all children data
+GET /api/v1/children/:id - Get data for a specific child
+DELETE /api/v1/children/:id - Delete data for a specific child
+
+Article Data Management
+GET /api/v1/articles - Get all article data
+POST /api/v1/articles/:articleID - Add new article data
+GET /api/v1/articles/:articleID - Get data for a specific article
+DELETE /api/v1/articles/:articleID - Delete data for a specific article
+
+Prediction and Recommendations
+POST /api/v1/predictions - Get stunting risk prediction
+
+Contributing
+We welcome contributions to the Sigizi App backend server. To contribute:
+
+Fork the repository.
+Create a new branch (git checkout -b feature/your-feature-name).
+Make your changes.
+Commit your changes (git commit -m 'Add some feature').
+Push to the branch (git push origin feature/your-feature-name).
+Open a pull request.
+Please ensure your code adheres to our coding standards and includes appropriate tests.
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
 
 
 <!-- CONTACT -->
