@@ -68,3 +68,21 @@ The Sigizi App backend server handles the core functionalities of the applicatio
 ```bash
 git clone https://github.com/yourusername/sigizi-backend.git
 cd sigizi-backend
+
+
+<!-- CONTACT -->
+## Contact
+
+[Khoirun Niswa ](#) - niswa@gmail.com
+
+[Hindun Alvia R. ](#) - hindun@gmail.com
+
+[Frencilia Paulina A.](#) -  nonik@gmail.com 
+
+[Natasha Alflashya K.](#) -natasha@gmail.com
+
+[Rado Nelsondela S.S](#) - rado@gmail.com
+
+[Satrio Wicaksono N.](#) - satriowicaksono@gmail.com
+
+[Sofyan Nur Rohman](https://www.linkedin.com/in/sofyan-nur-rohman-83478818b) - sofyannurrohman1@gmail.com
