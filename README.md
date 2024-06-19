@@ -100,7 +100,7 @@ POST /api/v1/predictions - Get stunting risk prediction
 
 - ### 1. Prepare model.json from ML
   - Load the model in Express js code in `inference.js`
-  - ### 2. Setup Google Cloud
+- ### 2. Setup Google Cloud
   - Enable Cloud Compute Engine and Cloud SQL Admin
   - Create VM instance and SQL instance
   - Configure SQL networking for VM instance public IP
