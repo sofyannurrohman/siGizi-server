@@ -25,15 +25,12 @@ exports.predictStunting = async (req, res) => {
     } else {
       payload = [umur, 0, bb, pb, lk];
     }
+    console.log(payload);
     const hasil_predict = await predict(model, payload);
-    console.log(`hasil predict = ${hasil_predict}`);
-    console.log(`payload = ${payload}`);
-    if (hasil_predict == 1) {
+
+    console.log(hasil_predict);
+    if (hasil_predict === 1) {
       label = "stunting";
-    } else {
-      label = "tidak stunting";
-    }
-    if (label === "stunting") {
       if (umur < 6) {
         rule = await Rule.findByPk(1);
         food1 = await Food.findByPk(1);
@@ -123,6 +120,7 @@ exports.predictStunting = async (req, res) => {
         data: response,
       });
     } else {
+      let label = "tidak stunting";
       const suplement = await Suplement.findOne({
         order: Sequelize.literal("rand()"),
       });

@@ -1,11 +1,13 @@
+const processFileMiddleware = require("../middleware/upload");
 const { Article } = require("../models");
 const { Comment } = require("../models");
 const { ArticleImage } = require("../models");
+const { User } = require("../models");
 const { Storage } = require("@google-cloud/storage");
 
 keyFilename = "credentials.json";
 const storage = new Storage({ keyFilename });
-const bucket = storage.bucket("article-images-caps");
+const bucket = storage.bucket("sigizi-caps");
 
 exports.getArticles = async (req, res) => {
   try {
@@ -15,11 +17,22 @@ exports.getArticles = async (req, res) => {
       where: { articleID: articleID },
     });
 
+    const newUser = await User.findOne({ where: { id: article.userID } });
     const comments = await Comment.findAll({
+      attributes: { exclude: ["updatedAt"] },
       where: {
         articleID: articleID,
       },
+      include: [
+        {
+          model: User,
+          attributes: {
+            exclude: ["createdAt", "role_id", "password", "email", "updatedAt"],
+          },
+        },
+      ],
     });
+
     if (!article) {
       return res.status(404).json({
         status: "fail",
@@ -27,15 +40,29 @@ exports.getArticles = async (req, res) => {
         message: "Article not found",
       });
     }
+    let responseJSON;
+    if (!imageArticle) {
+      responseJSON = {
+        id: article.id,
+        user_article: newUser.name,
+        title: article.title,
+        body: article.body,
+        image_url: [],
+        createdAt: article.createdAt,
+        comments: comments,
+      };
+    } else {
+      responseJSON = {
+        id: article.id,
+        user_article: newUser.name,
+        title: article.title,
+        body: article.body,
+        image_url: imageArticle.url,
+        createdAt: article.createdAt,
+        comments: comments,
+      };
+    }
 
-    const responseJSON = {
-      id: article.id,
-      title: article.title,
-      body: article.body,
-      image_url: imageArticle.url,
-      createdAt: article.createdAt,
-      comments: comments,
-    };
     res.status(200).json({
       status: "success",
       data: responseJSON,
@@ -56,6 +83,15 @@ exports.getAllArticles = async (req, res) => {
       include: [
         {
           model: ArticleImage,
+          attributes: {
+            exclude: ["createdAt", "updatedAt"],
+          },
+        },
+        {
+          model: User,
+          attributes: {
+            exclude: ["createdAt", "role_id", "password", "email", "updatedAt"],
+          },
         },
       ],
     });
@@ -111,10 +147,10 @@ exports.updateArticles = async (req, res) => {
   const imageArticle = await ArticleImage.findOne({
     where: { articleID: articlesID },
   });
-
-  if (req.file) {
-    await bucket.file(imageArticle.filename).delete();
-  }
+  await processFileMiddleware(req, res);
+  // if (req.file) {
+  //   await bucket.file(imageArticle.filename).delete();
+  // }
 
   if (!article) {
     return res
@@ -127,15 +163,9 @@ exports.updateArticles = async (req, res) => {
       title: req.body.title,
       body: req.body.body,
     };
-    const newArticleImage = {
-      filename: req.file.path,
-    };
 
     await Article.update(newArticle, { where: { id: articlesID } });
 
-    await ArticleImage.update(newArticleImage, {
-      where: { articleID: articlesID },
-    });
     return res.status(201).json({
       status: "success",
       code: 201,

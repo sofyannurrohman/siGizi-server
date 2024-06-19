@@ -8,7 +8,7 @@ const { ArticleImage } = require("../models");
 const processFile = require("../middleware/upload");
 keyFilename = "credentials.json";
 const storage = new Storage({ keyFilename });
-const bucket = storage.bucket("article-images-caps");
+const bucket = storage.bucket("sigizi-caps");
 
 router.post("/articles/:id/upload", async (req, res) => {
   try {

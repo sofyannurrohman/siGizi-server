@@ -7,6 +7,7 @@ const articlesRouter = require("./routes/articles");
 const articleImageRouter = require("./routes/article_image");
 const commentsRouter = require("./routes/comments");
 const predictRouter = require("./routes/predict");
+const childsRouter = require("./routes/child");
 const AuthRouter = require("./routes/Auth");
 const morgan = require("morgan");
 
@@ -44,12 +45,13 @@ app.use(morgan("dev"));
 app.use(cors());
 
 //Routing
-app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/", usersRouter);
 app.use("/api/v1/auth", AuthRouter);
 app.use("/api/v1/", articlesRouter);
 app.use("/api/v1/", articleImageRouter);
 app.use("/api/v1/", commentsRouter);
 app.use("/api/v1/", predictRouter);
+app.use("/api/v1/", childsRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

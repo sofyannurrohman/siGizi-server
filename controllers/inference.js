@@ -6,7 +6,6 @@ function loadModel() {
 
 function predict(model, payload) {
   const inputData = tfjs.tensor(payload).reshape([-1, 5]);
-
   const score = tfjs.tidy(() => {
     const prediction = model?.predict(inputData);
     if (prediction) {
