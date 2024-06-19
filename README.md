@@ -7,7 +7,7 @@ C241-PS299
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/faniabdullah/bangkit-final-project">
+  <a href="https://github.com/sofyannurrohman/siGizi-server">
     <img src="https://storage.googleapis.com/sigizi-caps/logosigizi.png" width='400dp' alt="Logo" >
   </a>
 
