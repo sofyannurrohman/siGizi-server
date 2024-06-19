@@ -1,8 +1,35 @@
 # Sigizi App Backend Server
 
+
 C241-PS299
 
 Welcome to the backend server for the Sigizi App (Solusi Generasi Z Sehat dan Istimewa), an innovative application designed to combat childhood stunting by providing accurate predictions and personalized recommendations for nutrition and supplements.
+
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/faniabdullah/bangkit-final-project">
+    <img src="https://i.imgur.com/ABJzG5P.png" width='400dp' alt="Logo" >
+  </a>
+
+  <h3 align="center">SkinSkan App </h3>
+
+  <p align="center">
+    Application that helps users to know how to help users examine their own bodies to detect early stage skin cancer.
+   This is a project to fulfill the  <a href="https://grow.google/intl/id_id/bangkit/"><strong>Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka »</strong></a>
+   Program.
+    <br />
+    <a href="https://github.com/faniabdullah/bangkit-final-project"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/faniabdullah/bangkit-final-project">View Demo</a>
+    ·
+    <a href="https://github.com/faniabdullah/bangkit-final-project/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/faniabdullah/bangkit-final-project/issues">Request Feature</a>
+  </p>
+</p>
+
 
 ## Table of Contents
 
